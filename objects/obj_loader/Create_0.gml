@@ -5,7 +5,7 @@ selected_map = 0
 
 files_to_load = []
 
-
+game_init = false
 
 bytes_per_pixel = 4
 

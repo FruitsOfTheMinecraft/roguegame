@@ -37,25 +37,31 @@ if processes[@0] and not processes[@1] {
 	
 }
 
-if processes[@0] and processes[@1] {
+//if processes[@0] and processes[@1] {
 	
-	var items = array_length(global.rooms)
+//	var items = array_length(global.rooms)
 	
-	if items > 0 {
+//	if items > 0 {
 		
-		if keyboard_check_pressed(vk_up) {selected_map = (selected_map + 1) mod items}
-		if keyboard_check_pressed(vk_down) {selected_map = (selected_map - 1 + items) mod items}
+//		if keyboard_check_pressed(vk_up) {selected_map = (selected_map + 1) mod items}
+//		if keyboard_check_pressed(vk_down) {selected_map = (selected_map - 1 + items) mod items}
 		
+//	}
+	
+//}
+
+
+if not game_init {
+	if processes[@0] and processes[@1] {
+		instance_create_layer(0,0,"Instances", obj_game)
+		game_init = true
 	}
-	
 }
 
 
-
-
-
 if keyboard_check_pressed(vk_enter) {
-	show_debug_message(global.rooms[@selected_map])
+	//show_debug_message(global.rooms[@selected_map])
+	room_restart()
 }
 
 //if keyboard_check_pressed(ord("S")) {

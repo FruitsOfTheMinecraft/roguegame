@@ -3,25 +3,25 @@
 
 if processes[@0] {
 	
-	var image_map = global.rooms[@selected_map]
+	//var image_map = global.rooms[@selected_map]
 	
-	for (var i = 0; i < image_map.width; ++i) {
-		for (var k = 0; k < image_map.height; ++k) {
+	//for (var i = 0; i < image_map.width; ++i) {
+	//	for (var k = 0; k < image_map.height; ++k) {
 			
-			var index = i + (k * image_map.width)
+	//		var index = i + (k * image_map.width)
 			
-			draw_set_color(image_map.data[@index])
-			draw_rectangle(i, k, i, k ,false)
+	//		draw_set_color(image_map.data[@index])
+	//		draw_rectangle(i, k, i, k ,false)
 			
-		}
-	}
+	//	}
+	//}
 	
-	draw_set_color(c_white)
-	draw_text(4, 32, string(selected_map))
+	//draw_set_color(c_white)
+	//draw_text(4, 32, string(selected_map))
 	
-	if processes[@1] {
-		draw_text(4, 64, string(global.rooms[@selected_map].connection_flags))
-	}
+	//if processes[@1] {
+	//	draw_text(4, 64, string(global.rooms[@selected_map].connection_flags))
+	//}
 	
 }
 else {
