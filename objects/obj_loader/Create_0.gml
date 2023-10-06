@@ -1,4 +1,6 @@
 
+randomize()
+
 global.rooms = []
 
 selected_map = 0

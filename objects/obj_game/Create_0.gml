@@ -22,9 +22,7 @@ function get_room(i, k) {
 }
 
 function bits_opposite(bits) {
-	
-	return ((bits * 2) mod 16) + ((bits * 2) mod 16)
-	
+	return ((bits * 2) mod 16) | ((bits * 2) mod 16)
 }
 
 function room_selector(xx, yy) {
@@ -33,19 +31,19 @@ function room_selector(xx, yy) {
 	
 	var this_room = get_room(xx, yy - 1)
 	if this_room != undefined {
-		flag_needed = flag_needed | bits_opposite(this_room)
+		flag_needed = flag_needed | (bits_opposite(this_room) & 0x0001)
 	}
 	this_room = get_room(xx + 1, yy)
 	if this_room != undefined {
-		flag_needed = flag_needed | bits_opposite(this_room)
+		flag_needed = flag_needed | (bits_opposite(this_room) & 0x0010)
 	}
 	this_room = get_room(xx, yy + 1)
 	if this_room != undefined {
-		flag_needed = flag_needed | bits_opposite(this_room)
+		flag_needed = flag_needed | (bits_opposite(this_room) & 0x0100)
 	}
 	this_room = get_room(xx - 1, yy)
 	if this_room != undefined {
-		flag_needed = flag_needed | bits_opposite(this_room)
+		flag_needed = flag_needed | (bits_opposite(this_room) & 0x1000)
 	}
 	
 	if flag_needed mod 8 and flag_needed div 8 == 0 and random(1) > 0.5 {
@@ -67,18 +65,33 @@ function room_selector(xx, yy) {
 	
 }
 
+global.tilemap = layer_tilemap_get_id(layer_get_id("Tiles_1"));
 
 
+
+open = []
+closed = []
 for (var i = 0; i < rooms_width; ++i) {
-	array_push(rooms_data, [])
+	array_push(closed, [])
 	for (var k = 0; k < rooms_height; ++k) {
-	    room_selector(i, k)
+		array_push(closed[@i], false)
 	}
 }
 
+array_push(open, [2, 2])
 
 
-global.tilemap = layer_tilemap_get_id(layer_get_id("Tiles_1"));
+
+
+	
+
+
+
+
+
+
+
+
 
 //for (var i = 0; i < width; ++i) {
 //for (var k = 0; k < height; ++k) {
